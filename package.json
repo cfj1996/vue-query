@@ -7,7 +7,7 @@
     "dev": "vite",
     "clean": "rimraf ./build ./coverage",
     "build": "tsup",
-    "publish": "yarn build && npm publish --registry http://172.16.1.58:4873/"
+    "publish": "yarn build && npm publish --registry http://localhost:4873/"
   },
   "type": "module",
   "types": "build/legacy/index.d.ts",
@@ -61,6 +61,7 @@
     "build"
   ],
   "dependencies": {
+    "vue-demi": "^0.14.10"
   },
   "devDependencies": {
     "@types/node": "^20.14.10",

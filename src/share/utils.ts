@@ -1,5 +1,5 @@
 import type { MaybeRefDeep } from './types';
-import { isRef, unref } from '@vue/composition-api';
+import { isRef, unref } from 'vue-demi';
 
 export const VUE_QUERY_CLIENT = 'VUE_QUERY_CLIENT'
 

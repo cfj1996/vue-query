@@ -1,4 +1,4 @@
-import type { ComputedRef, Ref, UnwrapRef } from '@vue/composition-api';
+import type { ComputedRef, Ref, UnwrapRef } from 'vue-demi';
 
 type Primitive = string | number | boolean | bigint | symbol | undefined | null
 type UnwrapLeaf =

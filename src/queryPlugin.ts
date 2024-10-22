@@ -1,8 +1,8 @@
 import type { QueryClientConfig } from './core';
 import { QueryClient } from './share/queryClient';
 import { getClientKey } from './share/utils';
+import { isVue2 } from 'vue-demi';
 
-const isVue2 = true
 type ClientPersister = (client: QueryClient) => [() => void, Promise<void>]
 
 interface CommonOptions {

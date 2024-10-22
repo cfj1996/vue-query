@@ -8,7 +8,7 @@ import type {
   ThrowOnError,
 } from '../core/index';
 import { QueriesObserver } from '../core/index';
-import type { Ref } from '@vue/composition-api';
+import type { Ref } from 'vue-demi';
 import {
   computed,
   getCurrentScope,
@@ -18,7 +18,7 @@ import {
   shallowRef,
   unref,
   watch,
-} from '@vue/composition-api';
+} from 'vue-demi';
 
 import { useQueryClient } from './useQueryClient';
 import { cloneDeepUnref } from '../share/utils';

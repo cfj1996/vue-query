@@ -1,4 +1,4 @@
-import type { Ref } from '@vue/composition-api';
+import type { Ref } from 'vue-demi';
 import {
   computed,
   getCurrentScope,
@@ -8,7 +8,7 @@ import {
   shallowReadonly,
   toRefs,
   watch,
-} from '@vue/composition-api';
+} from 'vue-demi';
 import { useQueryClient } from './useQueryClient';
 import { cloneDeepUnref, shouldThrowError, updateState } from '../share/utils';
 import type { DefaultedQueryObserverOptions, QueryKey, QueryObserver, QueryObserverResult, } from '../core/index';

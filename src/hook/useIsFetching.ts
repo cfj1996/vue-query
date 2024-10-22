@@ -1,5 +1,5 @@
-import type { Ref } from '@vue/composition-api';
-import { getCurrentScope, onScopeDispose, ref, watchEffect } from '@vue/composition-api';
+import type { Ref } from 'vue-demi';
+import { getCurrentScope, onScopeDispose, ref, watchEffect } from 'vue-demi';
 import { useQueryClient } from './useQueryClient';
 import type { QueryFilters as QF } from '../core/index';
 import type { MaybeRefDeep } from '../share/types';

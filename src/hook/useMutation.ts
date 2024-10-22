@@ -1,4 +1,4 @@
-import type { ToRefs } from '@vue/composition-api';
+import type { ToRefs } from 'vue-demi';
 import {
   computed,
   getCurrentScope,
@@ -8,7 +8,7 @@ import {
   shallowReadonly,
   toRefs,
   watch,
-} from '@vue/composition-api';
+} from 'vue-demi';
 import type {
   DefaultError,
   MutateFunction,

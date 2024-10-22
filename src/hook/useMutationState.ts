@@ -1,5 +1,5 @@
-import type { Ref } from '@vue/composition-api';
-import { computed, getCurrentScope, onScopeDispose, shallowReadonly, shallowRef, watch, } from '@vue/composition-api';
+import type { Ref } from 'vue-demi';
+import { computed, getCurrentScope, onScopeDispose, shallowReadonly, shallowRef, watch, } from 'vue-demi';
 import { useQueryClient } from './useQueryClient';
 import { cloneDeepUnref } from '../share/utils';
 import type { Mutation, MutationFilters as MF, MutationState, } from '../core/index';
