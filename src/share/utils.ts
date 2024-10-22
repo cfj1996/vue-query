@@ -1,8 +1,5 @@
 import type { MaybeRefDeep } from './types';
-
-const isRef = (ref) => {
-  return typeof ref === 'object' && Reflect.has(ref, 'value') && ref.constructor.name === 'RefImpl';
-}
+import { isRef, unref } from '@vue/composition-api';
 
 export const VUE_QUERY_CLIENT = 'VUE_QUERY_CLIENT'
 
@@ -92,7 +89,7 @@ export function cloneDeepUnref<T>(
 
     // Unref refs and continue to recurse into the value.
     if (isRef(val)) {
-      return cloneDeepUnref((val as any).value, unrefGetters)
+      return cloneDeepUnref(unref(val), unrefGetters)
     }
 
     return undefined
