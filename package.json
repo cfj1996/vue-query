@@ -1,12 +1,13 @@
 {
   "name": "zan-vue-query",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Hooks for managing, caching and syncing asynchronous and remote data in Vue",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./build ./coverage",
-    "build": "tsup"
+    "build": "tsup",
+    "publish": "yarn build && npm publish --registry http://172.16.1.58:4873/"
   },
   "type": "module",
   "types": "build/legacy/index.d.ts",
