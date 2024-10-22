@@ -31,6 +31,7 @@ import type { MaybeRefDeep, NoUnknown } from './types';
 import { cloneDeepUnref } from './utils';
 import { QueryCache } from './queryCache';
 import { MutationCache } from './mutationCache';
+import { nextTick, ref } from 'vue-demi';
 
 
 export class QueryClient extends QC {
@@ -43,7 +44,7 @@ export class QueryClient extends QC {
     super(vueQueryConfig);
   }
 
-  isRestoring = {value: false}
+  isRestoring = ref(false)
   isFetching(filters: MaybeRefDeep<QueryFilters> = {}): number {
     return super.isFetching(cloneDeepUnref(filters));
   }
@@ -192,7 +193,7 @@ export class QueryClient extends QC {
 
     // (dosipiuk): We need to delay `refetchQueries` execution to next macro task for all reactive values to be updated.
     // This ensures that `context` in `queryFn` while `invalidating` along reactive variable change has correct
-    return Promise.resolve().then(() => {
+    return nextTick().then(() => {
       return super.refetchQueries(refetchFilters, optionsCloned);
     });
   }
