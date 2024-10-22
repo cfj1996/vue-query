@@ -388,7 +388,7 @@ export class Query<
           return new AbortController();
         }
       } catch (err) {
-        console.log(err);
+        console.error('The environment does not have a signal function and cannot implement manual shutdown requests.');
       }
       return new CustomizeAbortController();
     })();

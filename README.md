@@ -25,28 +25,28 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 
 # Quick Start
 
-1. Install `vue-query`
+1. Install `zan-vue-query`
 
    ```bash
-   $ npm i vue-query
+   $ npm i zan-vue-query
    ```
 
    or
 
    ```bash
-   $ pnpm add vue-query
+   $ pnpm add zan-vue-query
    ```
 
    or
 
    ```bash
-   $ yarn add vue-query
+   $ yarn add zan-vue-query
    ```
 
    or
 
    ```bash
-   $ bun add vue-query
+   $ bun add zan-vue-query
    ```
 
    > If you are using Vue 2.6, make sure to also setup [@vue/composition-api](https://github.com/vuejs/composition-api)
@@ -55,7 +55,7 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 
    ```tsx
    import { createApp } from 'vue'
-   import { QueryPlugin } from 'vue-query'
+   import { QueryPlugin } from 'zan-vue-query'
 
    import App from './App.vue'
 
@@ -66,7 +66,7 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 
    ```tsx
    import { defineComponent } from 'vue'
-   import { useQuery } from 'vue-query'
+   import { useQuery } from 'zan-vue-query'
 
    export default defineComponent({
      name: 'MyComponent',
