@@ -2,8 +2,8 @@ import type { Ref } from '@vue/composition-api';
 import { getCurrentScope, onScopeDispose, ref, watchEffect } from '@vue/composition-api';
 import { useQueryClient } from './useQueryClient';
 import type { QueryFilters as QF } from '../core/index';
-import type { MaybeRefDeep } from './types';
-import type { QueryClient } from './queryClient';
+import type { MaybeRefDeep } from '../share/types';
+import type { QueryClient } from '../share/queryClient';
 
 export type QueryFilters = MaybeRefDeep<QF>
 

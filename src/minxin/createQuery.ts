@@ -1,7 +1,9 @@
-import { DefaultError, QueryObserver } from '../core';
-import { QueryClient, UseQueryDefinedReturnType, UseQueryOptions, UseQueryReturnType } from '../hook';
+import type { DefaultError } from '../core';
+import { QueryObserver } from '../core';
+import type { UseQueryDefinedReturnType, UseQueryOptions, UseQueryReturnType } from '../hook/useQuery';
 import { createBaseQuery } from './createBaseQuery';
-import { createId } from './utils';
+import { createId } from '../share/utils';
+import { QueryClient } from '../share';
 
 type QueryKey = ReadonlyArray<unknown> | ((vm: any) => ReadonlyArray<unknown>)
 

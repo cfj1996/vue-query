@@ -20,48 +20,48 @@
     "build": "tsup"
   },
   "type": "module",
-  "types": "build/index.d.ts",
-  "main": "build/index.cjs",
-  "module": "build/index.js",
+  "types": "build/legacy/index.d.ts",
+  "main": "build/legacy/index.cjs",
+  "module": "build/legacy/index.js",
   "exports": {
     ".": {
       "import": {
-        "types": "./build/index.d.ts",
-        "default": "./build/index.js"
+        "types": "./build/modern/index.d.ts",
+        "default": "./build/modern/index.js"
       },
       "require": {
-        "types": "./build/index.d.cts",
-        "default": "./build/index.cjs"
+        "types": "./build/modern/index.d.cts",
+        "default": "./build/modern/index.cjs"
       }
     },
     "./hook": {
       "import": {
-        "types": "./build/hook/index.d.ts",
-        "default": "./build/hook/index.js"
+        "types": "./build/modern/hook/index.d.ts",
+        "default": "./build/modern/hook/index.js"
       },
       "require": {
-        "types": "./build/hook/index.d.cts",
-        "default": "./build/hook/index.cjs"
+        "types": "./build/modern/hook/index.d.cts",
+        "default": "./build/modern/hook/index.cjs"
       }
     },
     "./mixin": {
       "import": {
-        "types": "./build/minxin/index.d.ts",
-        "default": "./build/minxin/index.js"
+        "types": "./build/modern/mixin/index.d.ts",
+        "default": "./build/modern/mixin/index.js"
       },
       "require": {
-        "types": "./build/minxin/index.d.cts",
-        "default": "./build/minxin/index.cjs"
+        "types": "./build/modern/mixin/index.d.cts",
+        "default": "./build/modern/mixin/index.cjs"
       }
     },
     "./queryPlugin": {
       "import": {
-        "types": "./build/queryPlugin.d.cts",
-        "default": "./build/queryPlugin.js"
+        "types": "./build/modern/queryPlugin.d.ts",
+        "default": "./build/modern/queryPlugin.js"
       },
       "require": {
-        "types": "./build/queryPlugin.d.cts",
-        "default": "./build/queryPlugin.cjs"
+        "types": "./build/modern/queryPlugin.d.cts",
+        "default": "./build/modern/queryPlugin.cjs"
       }
     },
     "./package.json": "./package.json"
@@ -71,22 +71,11 @@
     "build",
     "src"
   ],
-  "nx": {
-    "targets": {
-      "test:lib": {
-        "dependsOn": [
-          "test:types"
-        ]
-      }
-    }
-  },
   "dependencies": {
-    "@vue/composition-api": "1.7.2"
   },
   "devDependencies": {
-    "element-ui": "^2.15.14",
     "@types/node": "^20.14.10",
-    "@vue/composition-api": "1.7.2",
+    "element-ui": "^2.15.14",
     "esbuild-plugin-file-path-extensions": "^2.1.2",
     "rimraf": "^5.0.9",
     "tsup": "8.0.2",
@@ -94,10 +83,11 @@
     "vite": "^4.5.3",
     "vite-plugin-vue2": "2.0.3",
     "vue": "2.6.14",
+    "@vue/composition-api": "^1.7.2",
     "vue-template-compiler": "2.6.14"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.1.2",
+    "@vue/composition-api": "^1.7.2",
     "vue": "^2.6.0 || ^3.3.0"
   },
   "peerDependenciesMeta": {

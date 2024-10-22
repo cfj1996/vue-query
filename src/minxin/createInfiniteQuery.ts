@@ -1,9 +1,9 @@
 import type { DefaultError, InfiniteData, QueryKey, QueryObserver, } from '../core/index';
 import { InfiniteQueryObserver } from '../core/index';
 import { createBaseQuery } from './createBaseQuery';
-import type { QueryClient } from '../hook/queryClient';
-import { createId } from './utils';
-import { UseInfiniteQueryOptions, UseInfiniteQueryReturnType, } from '../hook';
+import type { QueryClient } from '../share';
+import { createId } from '../share/utils';
+import type { UseInfiniteQueryOptions, UseInfiniteQueryReturnType, } from '../hook';
 
 export function createInfiniteQuery<
   TQueryFnData,

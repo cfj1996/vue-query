@@ -2,8 +2,8 @@ import type { DefaultError, DefinedQueryObserverResult, QueryKey, QueryObserverO
 import { QueryObserver } from '../core/index';
 import type { UseBaseQueryReturnType } from './useBaseQuery';
 import { useBaseQuery } from './useBaseQuery';
-import type { DeepUnwrapRef, MaybeRef, MaybeRefDeep, MaybeRefOrGetter, } from './types';
-import type { QueryClient } from './queryClient';
+import type { DeepUnwrapRef, MaybeRef, MaybeRefDeep, MaybeRefOrGetter, } from '../share/types';
+import type { QueryClient } from '../share/queryClient';
 
 type NonUndefinedGuard<T> = T extends undefined ? never : T
 

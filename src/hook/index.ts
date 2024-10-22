@@ -1,23 +1,10 @@
-export * from '../core/index'
-
 export { useQueryClient } from './useQueryClient'
-
-export { QueryClient } from './queryClient'
-export { QueryCache } from './queryCache'
-export { queryOptions } from './queryOptions'
-export { infiniteQueryOptions } from './infiniteQueryOptions'
-export type {
-  DefinedInitialDataInfiniteOptions,
-  UndefinedInitialDataInfiniteOptions,
-} from './infiniteQueryOptions'
-export { MutationCache } from './mutationCache'
 export { useQuery } from './useQuery'
 export { useQueries } from './useQueries'
 export { useInfiniteQuery } from './useInfiniteQuery'
 export { useMutation } from './useMutation'
 export { useIsFetching } from './useIsFetching'
 export { useIsMutating, useMutationState } from './useMutationState'
-export { VUE_QUERY_CLIENT } from './utils'
 
 export type {
   UseQueryOptions,

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "moduleResolution": "Bundler",
     "allowJs": true,
     "strict": false,

@@ -1,8 +1,5 @@
-import type { DataTag, DefaultError, QueryKey } from '../core/index'
-import type {
-  DefinedInitialQueryOptions,
-  UndefinedInitialQueryOptions,
-} from './useQuery'
+import type { DataTag, DefaultError, QueryKey } from '../core/index';
+import type { DefinedInitialQueryOptions, UndefinedInitialQueryOptions, } from '../hook/useQuery';
 
 export function queryOptions<
   TQueryFnData = unknown,

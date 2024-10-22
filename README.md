@@ -1,10 +1,3 @@
-[![Vue Query logo](https://raw.githubusercontent.com/TanStack/query/main/packages/vue-query/media/vue-query.png)](https://github.com/TanStack/query/tree/main/packages/vue-query)
-
-[![npm version](https://img.shields.io/npm/v/@tanstack/vue-query)](https://www.npmjs.com/package/@tanstack/vue-query)
-[![npm license](https://img.shields.io/npm/l/@tanstack/vue-query)](https://github.com/TanStack/query/blob/main/LICENSE)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@tanstack/vue-query)](https://bundlephobia.com/package/@tanstack/vue-query)
-[![npm](https://img.shields.io/npm/dm/@tanstack/vue-query)](https://www.npmjs.com/package/@tanstack/vue-query)
-
 # Vue Query
 
 Hooks for fetching, caching and updating asynchronous data in Vue.
@@ -35,25 +28,25 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 1. Install `vue-query`
 
    ```bash
-   $ npm i @tanstack/vue-query
+   $ npm i vue-query
    ```
 
    or
 
    ```bash
-   $ pnpm add @tanstack/vue-query
+   $ pnpm add vue-query
    ```
 
    or
 
    ```bash
-   $ yarn add @tanstack/vue-query
+   $ yarn add vue-query
    ```
 
    or
 
    ```bash
-   $ bun add @tanstack/vue-query
+   $ bun add vue-query
    ```
 
    > If you are using Vue 2.6, make sure to also setup [@vue/composition-api](https://github.com/vuejs/composition-api)
@@ -62,7 +55,7 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 
    ```tsx
    import { createApp } from 'vue'
-   import { QueryPlugin } from '@tanstack/vue-query'
+   import { QueryPlugin } from 'vue-query'
 
    import App from './App.vue'
 
@@ -73,7 +66,7 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
 
    ```tsx
    import { defineComponent } from 'vue'
-   import { useQuery } from '@tanstack/vue-query'
+   import { useQuery } from 'vue-query'
 
    export default defineComponent({
      name: 'MyComponent',
@@ -87,7 +80,27 @@ Visit https://tanstack.com/query/latest/docs/vue/overview
    })
    ```
 
-4. If you need to update options on your query dynamically, make sure to pass them as reactive variables
+4. create query 
+
+   ```tsx
+   import Vue from 'vue'
+   import { createQuery } from 'vue-query'
+   const [todosMixin, getTodosQuery] = createQuery({ queryKey: function(){
+      return ['todos', this.id]
+   }, queryFn: getTodos })
+   export default Vue.extend({
+     name: 'MyComponent',
+     props: {
+     id: Number
+     },
+     mixins: [todosMixin],
+    computed: {
+       todos: getTodosQuery
+    }
+   })
+   ```
+
+5. If you need to update options on your query dynamically, make sure to pass them as reactive variables
 
    ```tsx
    const id = ref(1)

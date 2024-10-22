@@ -1,8 +1,6 @@
 import type { QueryClientConfig } from './core';
-import { isServer } from './core';
-
-import { QueryClient } from './hook/queryClient';
-import { getClientKey } from './hook/utils';
+import { QueryClient } from './share/queryClient';
+import { getClientKey } from './share/utils';
 
 const isVue2 = true
 type ClientPersister = (client: QueryClient) => [() => void, Promise<void>]
@@ -42,25 +40,19 @@ export const QueryPlugin = {
         'queryClientConfig' in options ? options.queryClientConfig : undefined
       client = new QueryClient(clientConfig)
     }
-
-    if (!isServer) {
-      client.mount()
-    }
-
+    client.mount()
     let persisterUnmount = () => {
       // noop
     }
-    if(!client.restoringState){
-      client.restoringState = app.observable({isRestoring: false})
+    if(!client.isRestoring){
+      client.isRestoring = app.observable({value: false})
     }
     if (options.clientPersister) {
       client.isRestoring.value = true
-      client.restoringState.isRestoring = true
       const [unmount, promise] = options.clientPersister(client)
       persisterUnmount = unmount
       promise.then(() => {
         client.isRestoring.value = false
-        client.restoringState.isRestoring = false
         options.clientPersisterOnSuccess?.(client)
       })
     }
@@ -69,7 +61,6 @@ export const QueryPlugin = {
       client.unmount()
       persisterUnmount()
     }
-    app.prototype.$queryClient = client
     if (app.onUnmount) {
       app.onUnmount(cleanup)
     } else {
@@ -95,6 +86,7 @@ export const QueryPlugin = {
           this._provided[clientKey] = client
         },
       })
+      app.prototype.$queryClient = client
     } else {
       app.provide(clientKey, client)
     }

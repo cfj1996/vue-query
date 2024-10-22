@@ -21,10 +21,10 @@ import {
 } from '@vue/composition-api';
 
 import { useQueryClient } from './useQueryClient';
-import { cloneDeepUnref } from './utils';
+import { cloneDeepUnref } from '../share/utils';
 import type { UseQueryOptions } from './useQuery';
-import type { QueryClient } from './queryClient';
-import type { DeepUnwrapRef, MaybeRefDeep } from './types';
+import type { QueryClient } from '../share/queryClient';
+import type { DeepUnwrapRef, MaybeRefDeep } from '../share/types';
 
 // This defines the `UseQueryOptions` that are accepted in `QueriesOptions` & `GetOptions`.
 // `placeholderData` function does not have a parameter
@@ -308,7 +308,7 @@ export function useQueries<
   }
 
   watch(
-    client.isRestoring,
+    () => client.isRestoring.value,
     (isRestoring) => {
       if (!isRestoring) {
         unsubscribe()

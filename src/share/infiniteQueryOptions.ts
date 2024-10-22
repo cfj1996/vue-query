@@ -1,10 +1,5 @@
-import type {
-  DataTag,
-  DefaultError,
-  InfiniteData,
-  QueryKey,
-} from '../core/index'
-import type { UseInfiniteQueryOptions } from './useInfiniteQuery'
+import type { DataTag, DefaultError, InfiniteData, QueryKey, } from '../core/index';
+import type { UseInfiniteQueryOptions } from '../hook/useInfiniteQuery';
 
 export type UndefinedInitialDataInfiniteOptions<
   TQueryFnData,

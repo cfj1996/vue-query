@@ -1,8 +1,10 @@
-import type { MaybeRefDeep } from '../hook/types';
-import { DefaultError, type MutateOptions, MutationObserver, QueryClient, UseMutationReturnType } from '../hook';
+import type { MaybeRefDeep } from '../share/types';
+import type { DefaultError, MutateOptions } from '../core';
+import { MutationObserver } from '../core';
+import { QueryClient } from '../share';
+import type { UseMutationReturnType } from '../hook/useMutation';
 import { UseMutationOptionsBase } from '../hook/useMutation';
-import { cloneDeepUnref, getClientKey, shouldThrowError } from '../hook/utils';
-import { createId, fnBindThis } from '../minxin/utils';
+import { cloneDeepUnref, createId, fnBindThis, getClientKey, shouldThrowError } from '../share/utils';
 
 const createBaseMutation = function <
   TData = unknown,

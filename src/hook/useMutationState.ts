@@ -1,11 +1,11 @@
 import type { Ref } from '@vue/composition-api';
 import { computed, getCurrentScope, onScopeDispose, shallowReadonly, shallowRef, watch, } from '@vue/composition-api';
 import { useQueryClient } from './useQueryClient';
-import { cloneDeepUnref } from './utils';
+import { cloneDeepUnref } from '../share/utils';
 import type { Mutation, MutationFilters as MF, MutationState, } from '../core/index';
-import type { QueryClient } from './queryClient';
-import type { MaybeRefDeep } from './types';
-import type { MutationCache } from './mutationCache';
+import type { QueryClient } from '../share/queryClient';
+import type { MaybeRefDeep } from '../share/types';
+import type { MutationCache } from '../share/mutationCache';
 
 export type MutationFilters = MaybeRefDeep<MF>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createMutation, createQuery } from '../src';
+import { createMutation, createQuery, useQuery } from '../src';
 
 const [postsMixin, getPostData] = createQuery({
   queryKey: function() {
@@ -63,6 +63,19 @@ export default {
         userId: undefined,
       }
     };
+  },
+  setup(props){
+    useQuery({
+      queryKey: ['post 2', props.id],
+      queryFn: ({ queryKey }) => {
+        const id = queryKey[1];
+        return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`).then(
+          (response) => response.json(),
+        );
+
+      },
+      enabled: props.id !== undefined
+    })
   },
   props: {
     id: {

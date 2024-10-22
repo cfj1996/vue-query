@@ -1,8 +1,7 @@
-import type { QueryKey, QueryObserver } from '../core';
-import type { DefaultedQueryObserverOptions, QueryClient } from '../hook';
-import { cloneDeepUnref, getClientKey, shouldThrowError } from '../hook/utils';
-import { UseQueryOptionsGeneric } from '../hook/useBaseQuery';
-import { fnBindThis } from './utils';
+import type { DefaultedQueryObserverOptions, QueryKey, QueryObserver } from '../core';
+import type { QueryClient } from '../share';
+import { cloneDeepUnref, fnBindThis, getClientKey, shouldThrowError } from '../share/utils';
+import type { UseQueryOptionsGeneric } from '../hook/useBaseQuery';
 
 export const createBaseQuery = <
   TQueryFnData,
@@ -62,14 +61,12 @@ export const createBaseQuery = <
       }
     },
     created() {
-      console.log('$id', $id);
       const updateState = (data) => {
         Object.keys(data || {}).forEach((key) => {
           this.$set(this[`state_${$id}`], key, data[key]);
         });
       };
       const client = queryClient || this[queryClientKey] || this.$queryClient;
-      console.log('this[`client_${$id}`] ', this[`client_${$id}`]);
       this[`client_${$id}`] = client;
       const observer = new Observer(client, this[`defaultedOptions_${$id}`]);
       updateState(observer.getCurrentResult());
@@ -78,7 +75,7 @@ export const createBaseQuery = <
         // noop
       };
       this.$watch(
-        () => client.restoringState.isRestoring,
+        () => client.isRestoring.value,
         (isRestoring) => {
           if (!isRestoring) {
             this[`unsubscribe_${$id}`]();
@@ -95,7 +92,6 @@ export const createBaseQuery = <
         updateState(observer.getCurrentResult());
       };
       this.$watch(() => this[`defaultedOptions_${$id}`], () => {
-        console.log('watch defaultedOptions');
         updater();
       });
       this[`refetch_${$id}`] = (...args: Parameters<any>) => {

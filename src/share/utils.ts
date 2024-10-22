@@ -1,5 +1,8 @@
-import { isRef, unref } from '@vue/composition-api';
 import type { MaybeRefDeep } from './types';
+
+const isRef = (ref) => {
+  return typeof ref === 'object' && Reflect.has(ref, 'value') && ref.constructor.name === 'RefImpl';
+}
 
 export const VUE_QUERY_CLIENT = 'VUE_QUERY_CLIENT'
 
@@ -89,7 +92,7 @@ export function cloneDeepUnref<T>(
 
     // Unref refs and continue to recurse into the value.
     if (isRef(val)) {
-      return cloneDeepUnref(unref(val), unrefGetters)
+      return cloneDeepUnref((val as any).value, unrefGetters)
     }
 
     return undefined
@@ -120,4 +123,28 @@ export function shouldThrowError<T extends (...args: Array<any>) => boolean>(
   }
 
   return !!throwOnError
+}
+const obj = {
+  i: 0
+}
+export const createId = function() {
+  const e = 12
+  const t = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
+  const a = t.length
+  let n = ''
+  for (let i = 0; i < e; i++) n += t.charAt(Math.floor(Math.random() * a))
+  return `$${n}_${++obj.i}`
+}
+
+
+export const fnBindThis = (obj: any,  key: string, ctx: any, argCtx?: boolean) => {
+  const fn = obj?.[key]
+  if(typeof fn === 'function') {{
+    if(argCtx){
+      obj[key] = fn.bind(ctx, argCtx)
+    } else {
+      obj[key] = fn.bind(ctx)
+    }
+  }}
+  return obj
 }

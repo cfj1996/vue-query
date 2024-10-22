@@ -17,10 +17,10 @@ import type {
   MutationObserverResult,
 } from '../core/index';
 import { MutationObserver } from '../core/index';
-import { cloneDeepUnref, shouldThrowError, updateState } from './utils';
+import { cloneDeepUnref, shouldThrowError, updateState } from '../share/utils';
 import { useQueryClient } from './useQueryClient';
-import type { DistributiveOmit, MaybeRefDeep } from './types';
-import type { QueryClient } from './queryClient';
+import type { DistributiveOmit, MaybeRefDeep } from '../share/types';
+import type { QueryClient } from '../share/queryClient';
 
 type MutationResult<TData, TError, TVariables, TContext> = DistributiveOmit<
   MutationObserverResult<TData, TError, TVariables, TContext>,

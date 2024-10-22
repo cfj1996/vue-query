@@ -10,9 +10,9 @@ import {
   watch,
 } from '@vue/composition-api';
 import { useQueryClient } from './useQueryClient';
-import { cloneDeepUnref, shouldThrowError, updateState } from './utils';
+import { cloneDeepUnref, shouldThrowError, updateState } from '../share/utils';
 import type { DefaultedQueryObserverOptions, QueryKey, QueryObserver, QueryObserverResult, } from '../core/index';
-import type { QueryClient } from './queryClient';
+import type { QueryClient } from '../share/queryClient';
 import type { UseQueryOptions } from './useQuery';
 import type { UseInfiniteQueryOptions } from './useInfiniteQuery';
 
@@ -108,7 +108,7 @@ export function useBaseQuery<
   }
 
   watch(
-    client.isRestoring,
+    () => client.isRestoring.value,
     (isRestoring) => {
       if (!isRestoring) {
         unsubscribe()

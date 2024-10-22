@@ -1,5 +1,3 @@
-import { InfiniteQueryObserver } from '../core/index'
-import { useBaseQuery } from './useBaseQuery'
 import type {
   DefaultError,
   InfiniteData,
@@ -7,12 +5,13 @@ import type {
   InfiniteQueryObserverResult,
   QueryKey,
   QueryObserver,
-} from '../core/index'
+} from '../core/index';
+import { InfiniteQueryObserver } from '../core/index';
+import type { UseBaseQueryReturnType } from './useBaseQuery';
+import { useBaseQuery } from './useBaseQuery';
 
-import type { UseBaseQueryReturnType } from './useBaseQuery'
-
-import type { DeepUnwrapRef, MaybeRefDeep, MaybeRefOrGetter } from './types'
-import type { QueryClient } from './queryClient'
+import type { DeepUnwrapRef, MaybeRefDeep, MaybeRefOrGetter } from '../share/types';
+import type { QueryClient } from '../share/queryClient';
 
 export type UseInfiniteQueryOptions<
   TQueryFnData = unknown,

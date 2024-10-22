@@ -1,7 +1,7 @@
 import { inject } from '@vue/composition-api';
 
-import { getClientKey } from './utils';
-import type { QueryClient } from './queryClient';
+import { getClientKey } from '../share/utils';
+import type { QueryClient } from '../share/queryClient';
 
 export function useQueryClient(id = ''): QueryClient {
   const key = getClientKey(id)
