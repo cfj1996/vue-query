@@ -1,5 +1,5 @@
-<script lang="ts">
-import { createMutation, createQuery, useQuery } from '../src';
+<script lang="js">
+import { createMutation, createQuery, useQuery } from '../src'
 
 const [postsMixin, getPostData] = createQuery({
   queryKey: function() {
@@ -127,7 +127,6 @@ export default {
     <el-button v-if="!id" @click="addForm" :loading="addPostState.isPending">创建</el-button>
     <el-button v-else @click="editForm" :loading="editPostState.isPending">编辑</el-button>
   </div>
-
 </template>
 
 <style>

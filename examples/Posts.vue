@@ -1,6 +1,5 @@
-<script lang="ts">
-const rAF = (t) => new Promise(resolve => setTimeout(resolve, t));
-import { createInfiniteQuery, createMutation } from '../src';
+<script lang="js">
+import { createInfiniteQuery, createMutation } from '../src'
 
 const [delPostMixin, getDelPostState] = createMutation({
   mutationFn: ({ id }) => {
@@ -18,7 +17,6 @@ const [delPostMixin, getDelPostState] = createMutation({
 });
 const getPosts = async ({ pageParam, pageSize }) => {
   const count = Number(localStorage.getItem('count') || '22');
-  await rAF(1000);
   return fetch(`https://jsonplaceholder.typicode.com/posts?_page=${pageParam}&_limit=${pageSize}`).then(
     (response) => response.json().then((res) => ({
       items: pageParam * pageSize > count ? res.slice(0, count - (pageParam - 1) * pageSize) : res,
@@ -40,7 +38,8 @@ const [postsMixin, getPostsState] = createInfiniteQuery({
     }
     return lastPage.page + 1;
   },
-  queryFn: (data) => {
+  queryFn(data) {
+    console.log('arguments', this.postsState.data);
     const { pageParam, queryKey } = data;
     return getPosts({ pageParam, pageSize: queryKey[1] });
   }
@@ -104,7 +103,6 @@ export default {
       </li>
     </ul>
   </div>
-
 </template>
 
 <style scoped>
